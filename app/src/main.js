@@ -112,65 +112,83 @@ var langs = {
     'zu': 'Zulu'
 };
 
-var transText = 'Astana';
+/*
+#English 0
+#French 1
+#Spanish 2
+#Russian 3
+#Arabic 4
+#Farsi 5
+#Hebrew 6
+#Thai 7
+#Vietnamese 8
+#Chinese 9
+#Indonesia 10
+#Uzbekistan 11
+#Malaysia 12
+#MONGOLIAN 13
+#Chinese_TW 14
+*/
+
+var transText = 'Panama';
 translate.getText(transText,{to: 'en'}).then(function(text){
-console.log("en : " + text['text']);
+console.log(langs["en"] + " :  " + text['text']);
 });
 
 translate.getText(transText,{to: 'fr'}).then(function(text){
-console.log("fr : " + text['text']);
+console.log(langs["fr"] + " :  " + text['text']);
 });
 
 translate.getText(transText,{to: 'es'}).then(function(text){
-console.log("es : " + text['text'])
+console.log(langs["es"] + " :  " + text['text'])
 });
 
 translate.getText(transText,{to: 'ru'}).then(function(text){
-console.log("ru : " + text['text'])
+console.log(langs["ru"] + " :  " + text['text'])
 });
 
 translate.getText(transText,{to: 'ar'}).then(function(text){
-console.log("ar : " + text['text'])
+console.log(langs["ar"] + " :  " + text['text'])
 });
 
 translate.getText(transText,{to: 'fa'}).then(function(text){
-console.log("fa : " + text['text'])
+console.log(langs["fa"] + " :  " + text['text'])
 });
 
 translate.getText(transText,{to: 'iw'}).then(function(text){
-console.log("iw : " + text['text'])
+console.log(langs["iw"] + " :  " + text['text'])
 });
 
 translate.getText(transText,{to: 'th'}).then(function(text){
-console.log("th : " + text['text'])
+console.log(langs["th"] + " :  " + text['text'])
 });
 
 translate.getText(transText,{to: 'vi'}).then(function(text){
-console.log("vi : " + text['text'])
+console.log(langs["vi"] + " :  " + text['text'])
 });
 
 translate.getText(transText,{to: 'zh-cn'}).then(function(text){
-console.log("zh-cn : " + text['text'])
+console.log(langs["zh-cn"] + " :  " + text['text'])
 });
 
 translate.getText(transText,{to: 'id'}).then(function(text){
-console.log("id : " + text['text'])
+console.log(langs["id"] + " :  " + text['text'])
 });
 
 translate.getText(transText,{to: 'uz'}).then(function(text){
-console.log("fr : " + text['text'])
+console.log(langs["uz"] + " :  " + text['text'])
 });
 
 translate.getText(transText,{to: 'ms'}).then(function(text){
-console.log("ms : " + text['text'])
+console.log(langs["ms"] + " :  " + text['text'])
 });
 
 translate.getText(transText,{to: 'mn'}).then(function(text){
-console.log("mn : " + text['text'])
+console.log(langs["mn"] + " :  " + text['text'])
 });
 
 translate.getText(transText,{to: 'zh-tw'}).then(function(text){
-console.log("zh-tw : " + text['text'])
+console.log(langs["zh-tw"] + " :  " + text['text'])
 });
 
 
