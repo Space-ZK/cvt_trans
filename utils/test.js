@@ -53,9 +53,19 @@ var languageData={};
 for(var ColIdx = 1; typeof(worksheet[decTo26(ColIdx) + rowIdx]) != 'undefined'; ColIdx++)
 {
     languageData[decTo26(ColIdx)] = worksheet[decTo26(ColIdx) + rowIdx].v;
-    console.log(worksheet[decTo26(ColIdx) + rowIdx].v);
+    //console.log(worksheet[decTo26(ColIdx) + rowIdx].v);
 }
 
-console.log(languageData);
+//console.log(languageData);
 
-//if from Eng To Other
+var rowIdx = 2;
+var strData={};
+for(var ColIdx = 1; typeof(worksheet[decTo26(ColIdx) + rowIdx]) != 'undefined'; ColIdx++)
+{
+    console.log(decTo26(ColIdx) + '  ' + languageData[decTo26(ColIdx)]);
+    console.log(worksheet[decTo26(ColIdx) + rowIdx].v);
+    var tempData = {};
+    tempData[languageData[decTo26(ColIdx)]] = worksheet[decTo26(ColIdx) + rowIdx].v;
+    strData[worksheet['A2'].v] = tempData; 
+}
+console.log(strData);
