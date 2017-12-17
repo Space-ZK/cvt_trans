@@ -30,7 +30,7 @@ for (z in worksheet) {
     console.log(z);
 };
 */
-
+/*
 var Idx = 1;
 console.log(worksheet['B1'].v);
 while(typeof(worksheet[decTo26(Idx) + '1']) != 'undefined')
@@ -39,3 +39,16 @@ while(typeof(worksheet[decTo26(Idx) + '1']) != 'undefined')
     console.log(worksheet[decTo26(Idx) + '1'].v);
     Idx++;
 }
+*/
+
+/*first, scan the language types*/
+//default langs = english, index = 1
+var rowIdx = 1;
+var resultData={};
+for(var ColIdx = 1; typeof(worksheet[decTo26(ColIdx) + rowIdx]) != 'undefined'; ColIdx++)
+{
+    resultData[decTo26(ColIdx)] = worksheet[decTo26(ColIdx) + rowIdx].v;
+    console.log(worksheet[decTo26(ColIdx) + rowIdx].v);
+}
+
+console.log(resultData);
