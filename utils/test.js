@@ -58,15 +58,17 @@ for(var ColIdx = 1; typeof(worksheet[decTo26(ColIdx) + rowIdx]) != 'undefined'; 
 
 //console.log(languageData);
 
-var rowIdx = 2;
 var strData=[];
-for(var ColIdx = 1; typeof(worksheet[decTo26(ColIdx) + rowIdx]) != 'undefined'; ColIdx++)
+for(var rowIdx = 2; typeof(worksheet['A' + rowIdx]) != 'undefined'; rowIdx++)
 {
-    //console.log(decTo26(ColIdx) + '  ' + languageData[decTo26(ColIdx)]);
-    //console.log(worksheet[decTo26(ColIdx) + rowIdx].v);
-    var tempData = {};
-    tempData[languageData[decTo26(ColIdx)]] = worksheet[decTo26(ColIdx) + rowIdx].v;
-    if(!strData[worksheet['A2'].v]) strData[worksheet['A2'].v] = {};
-    strData[worksheet['A2'].v][languageData[decTo26(ColIdx)]] = worksheet[decTo26(ColIdx) + rowIdx].v; 
+    for(var ColIdx = 1; typeof(worksheet[decTo26(ColIdx) + rowIdx]) != 'undefined'; ColIdx++)
+    {
+        //console.log(decTo26(ColIdx) + '  ' + languageData[decTo26(ColIdx)]);
+        //console.log(worksheet[decTo26(ColIdx) + rowIdx].v);
+        var tempData = {};
+        tempData[languageData[decTo26(ColIdx)]] = worksheet[decTo26(ColIdx) + rowIdx].v;
+        if(!strData[worksheet['A' + rowIdx].v]) strData[worksheet['A' + rowIdx].v] = {};
+        strData[worksheet['A' + rowIdx].v][languageData[decTo26(ColIdx)]] = worksheet[decTo26(ColIdx) + rowIdx].v; 
+    }
 }
 console.log(strData);
