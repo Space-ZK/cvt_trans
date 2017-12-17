@@ -1,5 +1,5 @@
 var XLSX = require('xlsx');
-var workbook = XLSX.readFile('Mstar_DVB.xls');
+var workbook = XLSX.readFile('Mstar_DVB.xlsx');
 var sheet_name_list = workbook.SheetNames;
 //console.log(workbook.SheetNames);
 var worksheet = workbook.Sheets['word'];
