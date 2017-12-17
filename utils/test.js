@@ -25,6 +25,11 @@ function decTo26(dec) {
     return ans.split("").reverse().join("");
 }
 
+function prog26ToDec(prog26) {
+    //A-Z string to dec
+    //waiting for complete
+}
+
 /*
 for (z in worksheet) {
     console.log(z);
@@ -44,11 +49,13 @@ while(typeof(worksheet[decTo26(Idx) + '1']) != 'undefined')
 /*first, scan the language types*/
 //default langs = english, index = 1
 var rowIdx = 1;
-var resultData={};
+var languageData={};
 for(var ColIdx = 1; typeof(worksheet[decTo26(ColIdx) + rowIdx]) != 'undefined'; ColIdx++)
 {
-    resultData[decTo26(ColIdx)] = worksheet[decTo26(ColIdx) + rowIdx].v;
+    languageData[decTo26(ColIdx)] = worksheet[decTo26(ColIdx) + rowIdx].v;
     console.log(worksheet[decTo26(ColIdx) + rowIdx].v);
 }
 
-console.log(resultData);
+console.log(languageData);
+
+//if from Eng To Other
