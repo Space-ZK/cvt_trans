@@ -59,13 +59,14 @@ for(var ColIdx = 1; typeof(worksheet[decTo26(ColIdx) + rowIdx]) != 'undefined'; 
 //console.log(languageData);
 
 var rowIdx = 2;
-var strData={};
+var strData=[];
 for(var ColIdx = 1; typeof(worksheet[decTo26(ColIdx) + rowIdx]) != 'undefined'; ColIdx++)
 {
-    console.log(decTo26(ColIdx) + '  ' + languageData[decTo26(ColIdx)]);
-    console.log(worksheet[decTo26(ColIdx) + rowIdx].v);
+    //console.log(decTo26(ColIdx) + '  ' + languageData[decTo26(ColIdx)]);
+    //console.log(worksheet[decTo26(ColIdx) + rowIdx].v);
     var tempData = {};
     tempData[languageData[decTo26(ColIdx)]] = worksheet[decTo26(ColIdx) + rowIdx].v;
-    strData[worksheet['A2'].v] = tempData; 
+    if(!strData[worksheet['A2'].v]) strData[worksheet['A2'].v] = {};
+    strData[worksheet['A2'].v][languageData[decTo26(ColIdx)]] = worksheet[decTo26(ColIdx) + rowIdx].v; 
 }
 console.log(strData);
