@@ -1,5 +1,5 @@
 var XLSX = require('xlsx');
-var workbook = XLSX.readFile('Mstar_DVB.xlsx');
+var workbook = XLSX.readFile('Mstar_DVB_TCL_WP_QICAI_B.xls');
 var sheet_name_list = workbook.SheetNames;
 //console.log(workbook.SheetNames);
 var worksheet = workbook.Sheets['word'];
@@ -8,6 +8,115 @@ var worksheet = workbook.Sheets['word'];
 
 //console.log(String.fromCharCode({65, 66, 67}));
 
+var langs = {
+    'auto': 'Automatic',
+    'af': 'Afrikaans',
+    'sq': 'Albanian',
+    'ar': 'Arabic',
+    'hy': 'Armenian',
+    'az': 'Azerbaijani',
+    'eu': 'Basque',
+    'be': 'Belarusian',
+    'bn': 'Bengali',
+    'bs': 'Bosnian',
+    'bg': 'Bulgarian',
+    'ca': 'Catalan',
+    'ceb': 'Cebuano',
+    'ny': 'Chichewa',
+    'zh-cn': 'Chinese Simplified',
+    'zh-tw': 'Chinese Traditional',
+    'co': 'Corsican',
+    'hr': 'Croatian',
+    'cs': 'Czech',
+    'da': 'Danish',
+    'nl': 'Dutch',
+    'en': 'English',
+    'eo': 'Esperanto',
+    'et': 'Estonian',
+    'tl': 'Filipino',
+    'fi': 'Finnish',
+    'fr': 'French',
+    'fy': 'Frisian',
+    'gl': 'Galician',
+    'ka': 'Georgian',
+    'de': 'German',
+    'el': 'Greek',
+    'gu': 'Gujarati',
+    'ht': 'Haitian Creole',
+    'ha': 'Hausa',
+    'haw': 'Hawaiian',
+    'iw': 'Hebrew',
+    'hi': 'Hindi',
+    'hmn': 'Hmong',
+    'hu': 'Hungarian',
+    'is': 'Icelandic',
+    'ig': 'Igbo',
+    'id': 'Indonesian',
+    'ga': 'Irish',
+    'it': 'Italian',
+    'ja': 'Japanese',
+    'jw': 'Javanese',
+    'kn': 'Kannada',
+    'kk': 'Kazakh',
+    'km': 'Khmer',
+    'ko': 'Korean',
+    'ku': 'Kurdish (Kurmanji)',
+    'ky': 'Kyrgyz',
+    'lo': 'Lao',
+    'la': 'Latin',
+    'lv': 'Latvian',
+    'lt': 'Lithuanian',
+    'lb': 'Luxembourgish',
+    'mk': 'Macedonian',
+    'mg': 'Malagasy',
+    'ms': 'Malay',
+    'ml': 'Malayalam',
+    'mt': 'Maltese',
+    'mi': 'Maori',
+    'mr': 'Marathi',
+    'mn': 'Mongolian',
+    'my': 'Myanmar (Burmese)',
+    'ne': 'Nepali',
+    'no': 'Norwegian',
+    'ps': 'Pashto',
+    'fa': 'Persian',
+    'pl': 'Polish',
+    'pt': 'Portuguese',
+    'ma': 'Punjabi',
+    'ro': 'Romanian',
+    'ru': 'Russian',
+    'sm': 'Samoan',
+    'gd': 'Scots Gaelic',
+    'sr': 'Serbian',
+    'st': 'Sesotho',
+    'sn': 'Shona',
+    'sd': 'Sindhi',
+    'si': 'Sinhala',
+    'sk': 'Slovak',
+    'sl': 'Slovenian',
+    'so': 'Somali',
+    'es': 'Spanish',
+    'su': 'Sudanese',
+    'sw': 'Swahili',
+    'sv': 'Swedish',
+    'tg': 'Tajik',
+    'ta': 'Tamil',
+    'te': 'Telugu',
+    'th': 'Thai',
+    'tr': 'Turkish',
+    'uk': 'Ukrainian',
+    'ur': 'Urdu',
+    'uz': 'Uzbek',
+    'vi': 'Vietnamese',
+    'cy': 'Welsh',
+    'xh': 'Xhosa',
+    'yi': 'Yiddish',
+    'yo': 'Yoruba',
+    'zu': 'Zulu'
+};
+
+
+var strData=[];		//the excel data
 
 var chStart = 'A'.charCodeAt();
 var chEnd = 'Z'.charCodeAt();
@@ -28,6 +137,21 @@ function decTo26(dec) {
 function prog26ToDec(prog26) {
     //A-Z string to dec
     //waiting for complete
+}
+
+function getS(data) {
+	for (s in data) {
+		for(l in data[s]) {
+			if(l[0] == '#')
+				console.log(l.substring(1));
+		}
+	}
+}
+
+function getLangKey(lang, keys) {
+	for (s in keys) {
+		
+	}
 }
 
 /*
@@ -58,7 +182,6 @@ for(var ColIdx = 1; typeof(worksheet[decTo26(ColIdx) + rowIdx]) != 'undefined'; 
 
 //console.log(languageData);
 
-var strData=[];
 for(var rowIdx = 2; typeof(worksheet['A' + rowIdx]) != 'undefined'; rowIdx++)
 {
     for(var ColIdx = 1; typeof(worksheet[decTo26(ColIdx) + rowIdx]) != 'undefined'; ColIdx++)
@@ -71,4 +194,6 @@ for(var rowIdx = 2; typeof(worksheet['A' + rowIdx]) != 'undefined'; rowIdx++)
         strData[worksheet['A' + rowIdx].v][languageData[decTo26(ColIdx)]] = worksheet[decTo26(ColIdx) + rowIdx].v; 
     }
 }
-console.log(strData);
+//console.log(strData);
+getS(strData);
+
