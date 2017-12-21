@@ -4,6 +4,13 @@ var sheet_name_list = workbook.SheetNames;
 //console.log(workbook.SheetNames);
 var worksheet = workbook.Sheets['word'];
 
+const translate = require('translate-api');
+
+var transUrl = 'https://nodejs.org/en/';
+translate.getPage(transUrl).then(function(htmlStr){
+console.log(htmlStr.length)
+});
+
 //console.log(XLSX.utils.sheet_to_json(worksheet));
 
 //console.log(String.fromCharCode({65, 66, 67}));
@@ -139,37 +146,25 @@ function prog26ToDec(prog26) {
     //waiting for complete
 }
 
-function getS(data) {
+function getSrcText(data, lang) {
+		for(l in data) {
+			if((l[0] == '#') && (l.substring(1) == lang))		//protocol, language start with charator '#'
+			{
+				console.log(data[l]);
+				return data[l];
+			}
+		}
+}
+
+function getTargetLang(data, lang) {
 	for (s in data) {
-		for(l in data[s]) {
-			if(l[0] == '#')
-				console.log(l.substring(1));
+		if(data[s] == lang)
+		{
+			console.log(s);
+			return s;
 		}
 	}
 }
-
-function getLangKey(lang, keys) {
-	for (s in keys) {
-		
-	}
-}
-
-/*
-for (z in worksheet) {
-    console.log(z);
-};
-*/
-/*
-var Idx = 1;
-console.log(worksheet['B1'].v);
-while(typeof(worksheet[decTo26(Idx) + '1']) != 'undefined')
-{
-    console.log(decTo26(Idx) + '1');
-    console.log(worksheet[decTo26(Idx) + '1'].v);
-    Idx++;
-}
-*/
-
 /*first, scan the language types*/
 //default langs = english, index = 1
 var rowIdx = 1;
@@ -195,5 +190,13 @@ for(var rowIdx = 2; typeof(worksheet['A' + rowIdx]) != 'undefined'; rowIdx++)
     }
 }
 //console.log(strData);
-getS(strData);
+
+//getSrcText(strData['en_str_Picture_Text'], 'English');
+
+//getTargetLang(langs, 'Chinese Simplified');
+
+
+translate.getText(getSrcText(strData['en_str_Picture_Text'], 'English'),{to: getTargetLang(langs, 'Chinese Simplified')}).then(function(text){
+console.log(langs["en"] + " :  " + text['text']);
+});
 
