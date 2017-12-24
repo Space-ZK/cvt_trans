@@ -1,5 +1,5 @@
 var XLSX = require('xlsx');
-var workbook = XLSX.readFile('Mstar_DVB_TCL_WP_QICAI_B.xls');
+var workbook = XLSX.readFile('Mstar_DVB.xls');
 var sheet_name_list = workbook.SheetNames;
 //console.log(workbook.SheetNames);
 var worksheet = workbook.Sheets['word'];
@@ -10,10 +10,6 @@ var transUrl = 'https://nodejs.org/en/';
 translate.getPage(transUrl).then(function(htmlStr){
 console.log(htmlStr.length)
 });
-
-//console.log(XLSX.utils.sheet_to_json(worksheet));
-
-//console.log(String.fromCharCode({65, 66, 67}));
 
 var langs = {
     'auto': 'Automatic',
@@ -175,7 +171,7 @@ for(var ColIdx = 1; typeof(worksheet[decTo26(ColIdx) + rowIdx]) != 'undefined'; 
     //console.log(worksheet[decTo26(ColIdx) + rowIdx].v);
 }
 
-//console.log(languageData);
+
 
 for(var rowIdx = 2; typeof(worksheet['A' + rowIdx]) != 'undefined'; rowIdx++)
 {
@@ -189,14 +185,26 @@ for(var rowIdx = 2; typeof(worksheet['A' + rowIdx]) != 'undefined'; rowIdx++)
         strData[worksheet['A' + rowIdx].v][languageData[decTo26(ColIdx)]] = worksheet[decTo26(ColIdx) + rowIdx].v; 
     }
 }
-//console.log(strData);
 
-//getSrcText(strData['en_str_Picture_Text'], 'English');
+//debug
+/*
+for (s in strData) {
+    for(s2 in strData[s]) {
+        console.log(strData[s][s2]);
+    }
+    console.log('\n\n');
+}
+*/
 
-//getTargetLang(langs, 'Chinese Simplified');
-
-
+for(s in strData) {
+    for(s2 in strData[s]) {
+            translate.getText(getSrcText(strData[s], 'English'),{to: getTargetLang(langs, s2[1])}).then(function(text){
+                console.log(s2[1] + " :  " + text['text']);
+        });
+    }
+}
+/*
 translate.getText(getSrcText(strData['en_str_Picture_Text'], 'English'),{to: getTargetLang(langs, 'Chinese Simplified')}).then(function(text){
 console.log(langs["en"] + " :  " + text['text']);
 });
-
+*/
