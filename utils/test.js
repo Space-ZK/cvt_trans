@@ -165,16 +165,14 @@ function getTargetLang(data, lang) {
 //default langs = english, index = 1
 var rowIdx = 1;
 var languageData={};
-for(var ColIdx = 1; typeof(worksheet[decTo26(ColIdx) + rowIdx]) != 'undefined'; ColIdx++)
-{
+for(var ColIdx = 1; typeof(worksheet[decTo26(ColIdx) + rowIdx]) != 'undefined'; ColIdx++) {
     languageData[decTo26(ColIdx)] = worksheet[decTo26(ColIdx) + rowIdx].v;
     //console.log(worksheet[decTo26(ColIdx) + rowIdx].v);
 }
 
 
 
-for(var rowIdx = 2; typeof(worksheet['A' + rowIdx]) != 'undefined'; rowIdx++)
-{
+for(var rowIdx = 2; typeof(worksheet['A' + rowIdx]) != 'undefined'; rowIdx++) {
     for(var ColIdx = 1; typeof(worksheet[decTo26(ColIdx) + rowIdx]) != 'undefined'; ColIdx++)
     {
         //console.log(decTo26(ColIdx) + '  ' + languageData[decTo26(ColIdx)]);
