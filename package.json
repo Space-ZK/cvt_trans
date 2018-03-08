@@ -1,0 +1,22 @@
+{
+  "name": "cvt_trans",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app\\src\\main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Space-ZK/cvt_trans.git"
+  },
+  "author": "zk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Space-ZK/cvt_trans/issues"
+  },
+  "homepage": "https://github.com/Space-ZK/cvt_trans#readme",
+  "dependencies": {
+    "translate-api": "^0.3.12"
+  }
+}
