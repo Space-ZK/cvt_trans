@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/style.css"/>
+		<h1 id="header">smart cut demo</h1>
+	</head>
+
+	<body>
+		<div id=div_user_input>
+		原始长度(cm): 	<input id=proto_len type="text" value="600"/><br>
+
+		切割长度(cm): 	<input id=cutting_len type="text" value="131"/>
+						<button id=add_cutting_len>
+						+
+						</button>
+						<br>
+
+		切割损耗(cm): 	<input id=waste_len type="text" value="3"/><br>
+		</div>
+
+		<div id=div_cutting_list>
+		<button id=push_data>
+		上传数据到服务器
+		</button>
+		<br>
+		<p id=cutting_list_title>切割长度列表</p>
+		</div>
+		<p id="footer">Copyright N/A</p>
+
+		<script src='/socket.io/socket.io.js' type='text/javascript'></script>
+		<script src='http://code.jquery.com/jquery-1.8.0.min.js' type='text/javascript'></script>
+		<script src='javascripts/datatype.js' type='text/javascript'></script>
+		<script src='javascripts/uiprocess.js' type='text/javascript'></script>
+	</body>
+</html>
