@@ -1,5 +1,4 @@
-import requests
-from bs4 import BeautifulSoup
+
 
 languages_dictionary = {
 	"English":"en",  	#英语
@@ -31,7 +30,7 @@ languages_dictionary = {
 	"Georgian":"ka",  	#格鲁吉亚语
 	"Gujarati":"gu",  	#古吉拉特语
 	"Kazakh":"kk",  	#哈萨克语
-	"Haitian Creole":"ht",  	#海地克里奥尔语
+	"HaitianCreole":"ht",  	#海地克里奥尔语
 	"Korean":"ko",  	#韩语
 
 	"Hausa":"ha",  		#豪萨语
@@ -84,7 +83,7 @@ languages_dictionary = {
 	"Slovenian":"sl",  	#斯洛文尼亚语
 
 	"Swahili":"sw",  	#斯瓦西里语
-	"Scottish Gaelic":"gd",  	#苏格兰盖尔语
+	"ScottishGaelic":"gd",  	#苏格兰盖尔语
 	"Cebu":"ceb",  		#宿务语
 	"Somali":"so",  	#索马里语
 	"Tajik":"tg",  		#塔吉克语
@@ -110,72 +109,16 @@ languages_dictionary = {
 	"Italian":"it",  	#意大利语
 	"Yiddish":"yi",  	#意第绪语
 	"Hindi":"hi",  		#印地语
-	"Indonesian Sundanese":"su",  		#印尼巽他语
+	"IndonesianSundanese":"su",  		#印尼巽他语
 	"Indonesian":"id",  	#印尼语
 	"Javanese":"jw",  		#印尼爪哇语
 	"English":"en",  	#英语
 	"Yoruba":"yo",  	#约鲁巴语
 
 	"Vietnamese":"vi",  	#越南语
-	"Traditional Chinese":"zh-TW",  #中文繁体
-	"Chinese Simplified":"zh-CN",  	#中文简体
+	"TraditionalChinese":"zh-TW",  #中文繁体
+	"ChineseSimplified":"zh-CN",  	#中文简体
 }
 
-def getHTMLText(url):
-    try:
-        r = requests.get(url, timeout=30)
-        r.raise_for_status()
-        return r.text
-    except:
-        print("Get HTML Text Failed!")
-        return 0
-  
-def google_translate_EtoC(to_translate, from_language="en", to_language="ch-CN"):
-    #根据参数生产提交的网址
-    base_url = "https://translate.google.cn/m?hl={}&sl={}&ie=UTF-8&q={}"
-    url = base_url.format(to_language, from_language, to_translate)
-    print("fuckkkkkkkk-------->>  " + url)
-    #获取网页
-    html = getHTMLText(url)
-    if html:
-        soup = BeautifulSoup(html, "html.parser")
-      
-    #解析网页得到翻译结果   
-    try:
-        result = soup.find_all("div", {"class":"t0"})[0].text
-    except:
-        print("Translation Failed!")
-        result = ""
-          
-    return result
- 
-def google_translate_CtoE(to_translate, from_language="ch-CN", to_language="en"):
-    #根据参数生产提交的网址
-    base_url = "https://translate.google.cn/m?hl={}&sl={}&ie=UTF-8&q={}"
-    url = base_url.format(to_language, from_language, to_translate)
-      
-    #获取网页
-    html = getHTMLText(url)
-    if html:
-        soup = BeautifulSoup(html, "html.parser")
-      
-    #解析网页得到翻译结果   
-    try:
-        result = soup.find_all("div", {"class":"t0"})[0].text
-    except:
-        print("Translation Failed!")
-        result = ""
-          
-    return result
- 
-def main():
-    while True:
-        inp = int(input("Chinese to Englisth is 1, English to Chinese is 2:    "))
-        if inp == 1:
-            words = input("请输入中文:    ")
-            print(google_translate_CtoE(words))
-        else:
-            words = input("Please input English:    ")
-            print(google_translate_EtoC(words))
- 
-main()
+def get_language_key_map():
+	return languages_dictionary
