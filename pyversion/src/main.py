@@ -14,54 +14,16 @@ def getHTMLText(url):
         print("Get HTML Text Failed!")
         return 0
   
-def google_translate_EtoC(to_translate, from_language="en", to_language="ch-CN"):
-    #根据参数生产提交的网址
-    base_url = "https://translate.google.cn/m?hl={}&sl={}&ie=UTF-8&q={}"
-    url = base_url.format(to_language, from_language, to_translate)
-    #获取网页
-    html = getHTMLText(url)
-    if html:
-        soup = BeautifulSoup(html, "html.parser")
-      
-    #解析网页得到翻译结果   
-    try:
-        result = soup.find_all("div", {"class":"t0"})[0].text
-    except:
-        print("Translation Failed!")
-        result = ""
-          
-    return result
- 
-def google_translate_CtoE(to_translate, from_language="ch-CN", to_language="en"):
-    #根据参数生产提交的网址
-    base_url = "https://translate.google.cn/m?hl={}&sl={}&ie=UTF-8&q={}"
-    url = base_url.format(to_language, from_language, to_translate)
-      
-    #获取网页
-    html = getHTMLText(url)
-    if html:
-        soup = BeautifulSoup(html, "html.parser")
-      
-    #解析网页得到翻译结果   
-    try:
-        result = soup.find_all("div", {"class":"t0"})[0].text
-    except:
-        print("Translation Failed!")
-        result = ""
-          
-    return result
+def google_translate(to_translate, from_language, to_language):
 
-def google_translate_X(to_translate, from_language, to_language):
-    #根据参数生产提交的网址
     base_url = "https://translate.google.cn/m?hl={}&sl={}&ie=UTF-8&q={}"
     url = base_url.format(to_language, from_language, to_translate)
       
-    #获取网页
+
     html = getHTMLText(url)
     if html:
         soup = BeautifulSoup(html, "html.parser")
-      
-    #解析网页得到翻译结果   
+    
     try:
         result = soup.find_all("div", {"class":"t0"})[0].text
     except:
@@ -73,7 +35,7 @@ def google_translate_X(to_translate, from_language, to_language):
 def get_translated_language_list(filename):
     language_list_result = []
     file_language_list = open(filename, "r")
-    re_language = "#([A-Z|a-z]+)[\s]"
+    re_language = "#([A-Z|a-z|_]+)"
     re_language_pattern = re.compile(re_language)
     while 1:
         str_line = file_language_list.readline()
@@ -89,10 +51,34 @@ def get_translated_language_list(filename):
     return language_list_result
 
 def google_translate_enTomany(to_translate, from_language, lang_list):
-    for to_lang in lang_list:
-        print("--->>  " + to_lang)
-        to_lang_code = get_language_key_map()[to_lang]
-        print(google_translate_X(to_translate, from_language, to_lang_code))
+    for key in to_translate:
+        i = 0
+        for to_lang in lang_list:
+            if to_lang in get_language_key_map():
+                to_lang_code = get_language_key_map()[to_lang]
+                print("%s.%d=%s" %(key, i, google_translate(to_translate[key], from_language, to_lang_code)))
+            else:
+                print("nothing can be translated!")
+            i = i + 1
+
+def get_source_text(filename):
+    src_text_dic = {}
+    file_src_text_list = open(filename, "r")
+    re_src_text = "(en_str[A-Z|a-z|0-9|_]+)[\s]+(.+)"
+    re_src_text_pattern = re.compile(re_src_text)
+    while 1:
+        str_line = file_src_text_list.readline()
+        if not str_line:
+            break;
+        re_src_text_match_obj = re_src_text_pattern.search(str_line)
+        if re_src_text_match_obj:
+            src_text_dic[re_src_text_match_obj.group(1)]=re_src_text_match_obj.group(2)
+            #print(re_src_text_match_obj.group(1) + "|||||||||" + re_src_text_match_obj.group(2))
+        else:
+            print("nothing src text match")
+
+    file_src_text_list.close()
+    return src_text_dic
 
 # def main():
 #     while True:
@@ -106,6 +92,9 @@ def google_translate_enTomany(to_translate, from_language, lang_list):
  
 # main()
 
+src_text_list = get_source_text("../translations/source_text.txt")
+# print(src_text_list)
 lang_list = get_translated_language_list("../translations/language_list.txt")
-google_translate_enTomany("hello", "en", lang_list)
+google_translate_enTomany(src_text_list, "en", lang_list)
+
 

@@ -1,2 +1,2 @@
-Picture Mode
-Sound Mode
+en_str_Picture_Mode Picture Mode
+en_str_Source_Mode Sound Mode

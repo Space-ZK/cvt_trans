@@ -15,7 +15,7 @@ languages_dictionary = {
 
 
 	"Polish":"pl",  	#波兰语
-	"Bosnian":"bs",  	#波斯尼亚语
+	"Montenegrin_bosnian":"bs",  	#波斯尼亚语
 	"Persian":"fa",		#波斯语
 	"Afrikaans":"af",  	#布尔语(南非荷兰语)
 	"Danish":"da",  	#丹麦语
@@ -55,13 +55,13 @@ languages_dictionary = {
 	"Maltese":"mt",  	#马耳他语
 	"Marathi":"mr",  	#马拉地语
 	"Malayalam":"ml",  	#马拉雅拉姆语
-	"Malay":"ms",  		#马来语
+	"Malaysia":"ms",  		#马来语
 	"Macedonian":"mk",  	#马其顿语
 	"Maori":"mi",  		#毛利语
 	"Mongolian":"mn",  	#蒙古语
 
 	"Bengali":"bn",  	#孟加拉语
-	"Burmese":"my",  	#缅甸语
+	"Myanmar":"my",  	#缅甸语
 	"Miao":"hmn",  		#苗语
 	"South African Xhosa":"xh",  	#南非科萨语
 	"South African Zulu":"zu",  	#南非祖鲁语
@@ -82,7 +82,7 @@ languages_dictionary = {
 	"Slovak":"sk", 		#斯洛伐克语
 	"Slovenian":"sl",  	#斯洛文尼亚语
 
-	"Swahili":"sw",  	#斯瓦西里语
+	"Kiswahili":"sw",  	#斯瓦西里语
 	"ScottishGaelic":"gd",  	#苏格兰盖尔语
 	"Cebu":"ceb",  		#宿务语
 	"Somali":"so",  	#索马里语
@@ -94,7 +94,7 @@ languages_dictionary = {
 	"Welsh":"cy",  		#威尔士语
 
 	"Urdu":"ur",  		#乌尔都语
-	"Ukrainian":"uk",  	#乌克兰语
+	"Ukranian":"uk",  	#乌克兰语
 	"Uzbek":"uz",  		#乌兹别克语
 	"Spanish":"es",  	#西班牙语
 	"Hebrew":"iw",  	#希伯来语

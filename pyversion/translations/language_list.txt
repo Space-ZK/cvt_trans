@@ -1,3 +1,39 @@
-#Arabic 0
-#Thai 0
-#Vietnamese 0
+#Arabic
+#Thai
+#Vietnamese
+#English
+#Indonesian
+#Persian
+#French
+#Russian
+#German
+#Spanish
+#Dutch
+#Italian
+#Greek
+#Portuguese
+#Romanian
+#Bulgarian
+#Croatian
+#Macedonian
+#Czech
+#Polish
+#Hungarian
+#Slovak
+#Slovenian
+#Khmer
+#Serbian
+#Montenegrin_bosnian
+#Albania
+#Hebrew
+#Amharic
+#Montenegrin
+#Malaysia
+#Mongolian
+#Ukranian
+#Myanmar
+#Kiswahili
+#Turkish
+#Lithuanian
+#Estonian
+#Latvian
