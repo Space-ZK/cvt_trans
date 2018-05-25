@@ -53,6 +53,7 @@ def get_translated_language_list(filename):
 def google_translate_enTomany(to_translate, from_language, lang_list, outputfilename):
     file_output = open(outputfilename, "w")
     for key in to_translate:
+        file_output.write("\n#%s\n" % (key))
         i = 0
         for to_lang in lang_list:
             if to_lang in get_language_key_map():
@@ -63,7 +64,6 @@ def google_translate_enTomany(to_translate, from_language, lang_list, outputfile
                 print("nothing can be translated!")
                 file_output.write("%s.%d=\n" % (key, i))
             i = i + 1
-    file_output.write("\n\n")
     file_output.close()
 
 def get_source_text(filename):
