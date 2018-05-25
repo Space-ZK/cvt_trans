@@ -50,16 +50,21 @@ def get_translated_language_list(filename):
     file_language_list.close()
     return language_list_result
 
-def google_translate_enTomany(to_translate, from_language, lang_list):
+def google_translate_enTomany(to_translate, from_language, lang_list, outputfilename):
+    file_output = open(outputfilename, "w")
     for key in to_translate:
         i = 0
         for to_lang in lang_list:
             if to_lang in get_language_key_map():
                 to_lang_code = get_language_key_map()[to_lang]
                 print("%s.%d=%s" %(key, i, google_translate(to_translate[key], from_language, to_lang_code)))
+                file_output.write("%s.%d=%s\n" %(key, i, google_translate(to_translate[key], from_language, to_lang_code)))
             else:
                 print("nothing can be translated!")
+                file_output.write("%s.%d=\n" % (key, i))
             i = i + 1
+    file_output.write("\n\n")
+    file_output.close()
 
 def get_source_text(filename):
     src_text_dic = {}
@@ -80,21 +85,9 @@ def get_source_text(filename):
     file_src_text_list.close()
     return src_text_dic
 
-# def main():
-#     while True:
-#         inp = int(input("Chinese to Englisth is 1, English to Chinese is 2:    "))
-#         if inp == 1:
-#             words = input("请输入中文:    ")
-#             print(google_translate_CtoE(words))
-#         else:
-#             words = input("Please input English:    ")
-#             print(google_translate_EtoC(words))
- 
-# main()
 
 src_text_list = get_source_text("../translations/source_text.txt")
-# print(src_text_list)
 lang_list = get_translated_language_list("../translations/language_list.txt")
-google_translate_enTomany(src_text_list, "en", lang_list)
+google_translate_enTomany(src_text_list, "en", lang_list, "result.txt")
 
 
